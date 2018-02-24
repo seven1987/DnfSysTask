@@ -1,0 +1,5 @@
+ # 前端国际化开发说明
+
+ 1 前端渲染的文字定义在frontend.php下
+ 2 前端js使用的文字， 定义在frontend_js.php下面，
+ 3 系统相关的提示信息原先定义在common/utils/DataPackager.php的文字， 会映射到SysCode.php里面，因此DataPackager里面定义的是多语言的key，真正的语言翻译，需要在SysCode.php下面再定义

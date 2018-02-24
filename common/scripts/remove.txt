@@ -1,0 +1,36 @@
+use dm_admin;
+db.bet_hash.remove({});
+db.handicap_hash.remove({});
+db..remove({});
+db..remove({});
+
+use dm_member;
+db.agent.remove({})
+db.agent_bet_rule.remove({})
+db.agent_handicap_right.remove({})
+db.bet_rule.remove({})
+db.message.remove({})
+db.money.remove({})
+db.money_log.remove({})
+db.user.remove({})
+
+use dm_data;
+db.bet.remove({})
+db.bet_string_detail.remove({})
+db.handicap.remove({})
+db.handicap_bet.remove({})
+db.handicap_odds.remove({})
+db.handicap_odds_his.remove({})
+db.reckon.remove({});
+
+use dm_his;
+db.his_agent_bet_day.remove({})
+db.his_bet.remove({})
+db.his_bet_string_detail.remove({})
+db.his_money_log.remove({})
+
+use dm_game;
+db.race.remove({})
+db.matches.remove({})
+db..remove({})
+db..remove({})

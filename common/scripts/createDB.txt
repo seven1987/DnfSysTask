@@ -1,0 +1,103 @@
+use dm_admin;
+db.createUser( { "user" : "root","pwd": "dm_admin123456",roles:[{role:"readWrite", db:"dm_admin"}]});
+db.createCollection("admin_log");
+db.createCollection("admin_menu");
+db.createCollection("admin_module");
+db.createCollection("admin_right");
+db.createCollection("admin_right_url");
+db.createCollection("admin_role");
+db.createCollection("admin_role_right");
+db.createCollection("admin_user");
+db.createCollection("admin_user_role");
+db.createCollection("bet_hash");
+db.createCollection("handicap_hash");
+db.createCollection("idgenerator");
+db.createCollection("odds_base");
+db.admin_menu.ensureIndex({"id":1},{"unique":true});
+db.admin_module.ensureIndex({"id":1},{"unique":true});
+db.admin_right.ensureIndex({"id":1},{"unique":true});
+db.admin_role.ensureIndex({"id":1},{"unique":true});
+db.admin_role_right.ensureIndex({"id":1},{"unique":true});
+db.admin_user.ensureIndex({"id":1},{"unique":true});
+db.admin_user_role.ensureIndex({"id":1},{"unique":true});
+db.admin_right_url.ensureIndex({"id":1},{"unique":true});
+db.bet_hash.ensureIndex({"bet_id":1},{"unique":true});
+db.handicap_hash.ensureIndex({"handicap_id":1},{"unique":true});
+db.idgenerator.ensureIndex({"tablename":1},{"unique":true});
+
+use dm_data;
+db.createUser( { "user" : "root","pwd": "dm_data123456",roles:[{role:"readWrite", db:"dm_data"}]});
+db.createCollection("bet");
+db.createCollection("bet_string_detail");
+db.createCollection("handicap");
+db.createCollection("handicap_bet");
+db.createCollection("handicap_odds");
+db.createCollection("handicap_odds_his");
+db.createCollection("reckon");
+db.bet.ensureIndex({"bet_id":1},{"unique":true}); 
+db.bet_string_detail.ensureIndex({"bet_id":1,"han_id":1},{"unique":true});
+db.handicap.ensureIndex({"han_id":1},{"unique":true});
+db.handicap_bet.ensureIndex({"han_id":1,"part_id":1,"agent_id":1},{"unique":true});
+db.handicap_odds.ensureIndex({"han_id":1,"part_id":1},{"unique":true});
+db.handicap_odds_his.ensureIndex({"han_id":1,"part_id":1,"id":1},{"unique":true});
+db.reckon.ensureIndex({"han_id":1},{"unique":true});
+
+use dm_game;
+db.createUser( { "user" : "root","pwd": "dm_game123456",roles:[{role:"readWrite", db:"dm_game"}]});
+db.createCollection("game");
+db.createCollection("matches");
+db.createCollection("play");
+db.createCollection("race");
+db.createCollection("team");
+db.createCollection("team_member");
+db.createCollection("zone");
+db.game.ensureIndex({"game_id":1},{"unique":true});
+db.matches.ensureIndex({"match_id":1},{"unique":true});
+db.play.ensureIndex({"play_id":1},{"unique":true});
+db.race.ensureIndex({"race_id":1},{"unique":true});
+db.team.ensureIndex({"team_id":1},{"unique":true});
+db.team_member.ensureIndex({"member_id":1},{"unique":true});
+db.zone.ensureIndex({"zone_id":1},{"unique":true});
+
+use dm_his;
+db.createUser( { "user" : "root","pwd": "dm_his123456",roles:[{role:"readWrite", db:"dm_his"}]});
+db.createCollection("his_agent_bet_day");
+db.createCollection("his_bet");
+db.createCollection("his_bet_string_detail");
+db.createCollection("his_money");
+db.createCollection("his_money_log");
+db.his_bet.ensureIndex({"bet_id":1},{"unique":true});
+db.his_bet_string_detail.ensureIndex({"bet_id":1,"han_id":1},{"unique":true});
+db.his_money_log.ensureIndex({"money_log_id":1},{"unique":true});
+
+use dm_log;
+db.createCollection("system_log");
+db.system_log.ensureIndex({"log_id":1},{"unique":true});
+
+use dm_member;
+db.createUser( { "user" : "root","pwd": "dm_member123456",roles:[{role:"readWrite", db:"dm_member"}]});
+db.createCollection("agent");
+db.createCollection("agent_handicap_right");
+db.createCollection("bet_rule");
+db.createCollection("message");
+db.createCollection("money");
+db.createCollection("money_log");
+db.createCollection("user");
+db.createCollection("user_login_log");
+db.agent.ensureIndex({"agent_id":1},{"unique":true});
+db.agent_handicap_right.ensureIndex({"agent_id":1,"han_id":1},{"unique":true});
+db.message.ensureIndex({"msg_id":1},{"unique":true});
+db.money.ensureIndex({"user_id":1},{"unique":true});
+db.money_log.ensureIndex({"money_log_id":1},{"unique":true});
+db.user.ensureIndex({"user_id":1},{"unique":true});
+db.user.ensureIndex({"user_id":1,"id":1},{"unique":true});
+
+use dm_system;
+db.createUser( { "user" : "root","pwd": "dm_system123456",roles:[{role:"readWrite", db:"dm_system"}]});
+db.createCollection("bet_hash");
+db.createCollection("handicap_hash");
+db.bet_hash.ensureIndex({"bet_id":1},{"unique":true});
+db.handicap_hash.ensureIndex({"han_id":1},{"unique":true});
+
+
+

@@ -1,0 +1,44 @@
+use dm_data
+db.bet.ensureIndex({"bet_id":1},{"unique":true}); 
+db.bet_string_detail.ensureIndex({"bet_id":1,"han_id":1},{"unique":true});
+db.handicap.ensureIndex({"han_id":1},{"unique":true});
+db.reckon.ensureIndex({"han_id":1},{"unique":true});
+db.handicap_odds.ensureIndex({"han_id":1,"part_id":1},{"unique":true});
+db.handicap_bet.ensureIndex({"han_id":1,"part_id":1,"agent_id":1},{"unique":true});
+
+use dm_his
+db.his_bet.ensureIndex({"bet_id":1},{"unique":true});
+db.his_bet_string_detail.ensureIndex({"bet_id":1,"han_id":1},{"unique":true});
+db.his_money_log.ensureIndex({"money_log_id":1},{"unique":true});
+
+use dm_admin
+db.admin_menu.ensureIndex({"id":1},{"unique":true});
+db.admin_module.ensureIndex({"id":1},{"unique":true});
+db.admin_right.ensureIndex({"id":1},{"unique":true});
+db.admin_role.ensureIndex({"id":1},{"unique":true});
+db.admin_role_right.ensureIndex({"id":1},{"unique":true});
+db.admin_user.ensureIndex({"id":1},{"unique":true});
+db.admin_user_role.ensureIndex({"id":1},{"unique":true});
+db.admin_right_url.ensureIndex({"id":1},{"unique":true});
+db.bet_hash.ensureIndex({"bet_id":1},{"unique":true});
+db.handicap_hash.ensureIndex({"handicap_id":1},{"unique":true});
+db.idgenerator.ensureIndex({"tablename":1},{"unique":true});
+db.idgenerator.ensureIndex({"tablename":1},{"unique":true});
+
+use dm_game
+db.game.ensureIndex({"game_id":1},{"unique":true});
+db.matches.ensureIndex({"match_id":1},{"unique":true});
+db.play.ensureIndex({"play_id":1},{"unique":true});
+db.race.ensureIndex({"race_id":1},{"unique":true});
+db.team.ensureIndex({"team_id":1},{"unique":true});
+db.team_member.ensureIndex({"member_id":1},{"unique":true});
+db.zone.ensureIndex({"zone_id":1},{"unique":true});
+
+use dm_member
+db.agent.ensureIndex({"agent_id":1},{"unique":true});
+db.message.ensureIndex({"msg_id":1},{"unique":true});
+db.money.ensureIndex({"user_id":1},{"unique":true});
+db.money_log.ensureIndex({"money_log_id":1},{"unique":true});
+db.user.ensureIndex({"user_id":1},{"unique":true});
+
+

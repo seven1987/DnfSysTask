@@ -1,0 +1,27 @@
+use dm_admin;
+db.admin_user.insert({ 
+    "id" : "1", 
+    "uname" : "admin", 
+    "password" : "$2y$13$nkIgBNyIoRrqsS/BGBDyTOrX.d7pfxlqmRxsayciIeOedFM1adUzq", 
+    "admintype" : NumberInt(1), 
+    "agent_id" : null, 
+    "auth_key" : null, 
+    "last_ip" : "127.0.0.1", 
+    "is_online" : NumberInt(1), 
+    "domain_account" : "", 
+    "status" : NumberInt(10), 
+    "create_user" : "admin", 
+    "create_date" : "2014-07-07 00:05:47", 
+    "update_user" : "admin", 
+    "update_date" : "2017-02-22 16:12:58"
+})
+
+db.admin_user_role.insert({ 
+    "user_id" : "1", 
+    "role_id" : NumberInt(20), 
+    "create_user" : "admin", 
+    "create_date" : "2017-02-22 16:12:58", 
+    "update_user" : "admin", 
+    "update_date" : "2017-02-22 16:12:58", 
+    "id" : NumberInt(1)
+})

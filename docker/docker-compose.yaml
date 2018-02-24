@@ -1,0 +1,15 @@
+version: "2"
+services:
+  cp-sys-hall-dev:
+    image: dnf/php:7.0
+    command: bash -c "exec php /var/www/html/systask/main-sysserver.php 1>>/var/www/html/systask/log/debug.log 2>>/var/www/html/systask/log/error.log"
+    volumes:
+      - /usr/share/zoneinfo/PRC:/etc/localtime
+      - ${APP_CODE_DIR}:/var/www/html
+      - /data/volumes/${COMPOSE_PROJECT_NAME}/systask/log:/var/www/html/systask/log
+      - /data/volumes/${COMPOSE_PROJECT_NAME}/systask/runtime:/var/www/html/systask/runtime
+    ports:
+      - ${SYS_PORT}:${SYS_PORT}
+    restart: always
+    environment:
+      - HALL=hall-dev
