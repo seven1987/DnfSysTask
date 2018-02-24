@@ -3,7 +3,7 @@
 set -xe
 
 #export REMOTE_HOST="vm.app"
-#export REMOTE_ROOT="/data/bigame"
+#export REMOTE_ROOT="/data/dnf"
 #(cd ${WORKSPACE}/devops/;chmod +x *.sh; ./test.sh)
 
 SERVICE_NAME="sys"
@@ -11,7 +11,7 @@ TAR_NAME="${SERVICE_NAME}-${BUILD_ID}-`date +%y%m%d`"
 TAR_GZ="${TAR_NAME}.tar.gz"
 ARR_HOST=($REMOTE_HOST)
 
-type=$1;
+type="dev";
 REMOTE_PATH="${REMOTE_ROOT}/$type"
 case $type in
     "dev") env_type="dev"; config_type="develop";;
