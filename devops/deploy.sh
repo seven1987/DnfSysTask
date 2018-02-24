@@ -11,45 +11,17 @@ TAR_NAME="${SERVICE_NAME}-${BUILD_ID}-`date +%y%m%d`"
 TAR_GZ="${TAR_NAME}.tar.gz"
 ARR_HOST=($REMOTE_HOST)
 
-type="dev";
-REMOTE_PATH="${REMOTE_ROOT}/$type"
-case $type in
-    "dev") env_type="dev"; config_type="develop";;
-    "test") env_type="test"; config_type="test";;
-    "prod") env_type='prod'; config_type='release';;
-    *) echo "unknown type: $type"; exit 1;;
-esac
 
 ## 需要构建的厅, 必填； 用于发布指定厅而不影响其它厅##
 echo "======BUILD_HALL_LIST========"$BUILD_HALL_LIST;
 
-START_FILE="start.sh";#for test
-#if [ $env_type = "prod" ];then
-#    # 生产环境必须传构建的厅参数
-#    if [ "$BUILD_HALL_LIST" = "" ];then
-#        echo " BUILD_HALL_LIST IS NEEED!!!";
-#        exit 1;
-#    fi
-#    START_FILE="start.sh";
-#else
-#    if [ "$BUILD_HALL_LIST" = "" ];then
-#        # 非生产环境， 默认hall-dev 开发厅
-#        BUILD_HALL_LIST="hall-dev";
-#    fi
-#    START_FILE="start_dev.sh";
-#fi
+START_FILE="start.sh";
 
 cd ${WORKSPACE}/devops
 rm -rf *.tar.gz
 
-cp  -f ../docker/.env-${env_type} ../docker/.env
-
-cp  -f ../common/config/main-${config_type}.php ../common/config/main.php
-cp  -f ../common/config/params-${config_type}.php ../common/config/params.php
-
 echo $BUILD_ID>"../build_id.txt"
 echo $GIT_COMMIT>"../git_commit.txt"
-
 
 #find ../docker -name '*.sh'|xargs chmod +x
 find ../devops -name '*.sh'|xargs chmod +x

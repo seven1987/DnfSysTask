@@ -1,6 +1,6 @@
 version: "2"
 services:
-  cp-sys-hall-dev:
+  sys_task:
     image: dnf/php:7.0
     command: bash -c "exec php /var/www/html/systask/main-sysserver.php 1>>/var/www/html/systask/log/debug.log 2>>/var/www/html/systask/log/error.log"
     volumes:
