@@ -11,9 +11,9 @@ use Yii;
  * @property string $created
  * @property string $updated
  */
-class Test extends Base
+class Test extends BaseModel
 {
-    use TestTrait;
+    //use TestTrait;
 
     /**
      * @inheritdoc
