@@ -69,9 +69,9 @@ return [
 
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=192.168.50.25;dbname=core',
+            'dsn' => 'mysql:host=123.206.175.60;dbname=data',
             'username' => 'root',
-            'password' => 'mysql',
+            'password' => 'root',
             'charset' => 'utf8',
             'emulatePrepare' => false,
             'attributes' => [

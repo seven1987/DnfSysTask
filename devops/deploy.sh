@@ -11,6 +11,8 @@ TAR_NAME="${SERVICE_NAME}-${BUILD_ID}-`date +%y%m%d`"
 TAR_GZ="${TAR_NAME}.tar.gz"
 ARR_HOST=($REMOTE_HOST)
 
+type="dev";
+REMOTE_PATH="${REMOTE_ROOT}/$type"
 
 ## 需要构建的厅, 必填； 用于发布指定厅而不影响其它厅##
 echo "======BUILD_HALL_LIST========"$BUILD_HALL_LIST;
@@ -24,8 +26,8 @@ echo $BUILD_ID>"../build_id.txt"
 echo $GIT_COMMIT>"../git_commit.txt"
 
 #find ../docker -name '*.sh'|xargs chmod +x
-find ../devops -name '*.sh'|xargs chmod +x
-find ../docker -name '*.sh' -or -name "Dockerfile"|xargs dos2unix
+#find ../devops -name '*.sh'|xargs chmod +x
+#find ../docker -name '*.sh' -or -name "Dockerfile"|xargs dos2unix
 
 tar -czf ${TAR_GZ} -C .. . \
     --exclude=.git --exclude=common/.git --exclude=vendor/.git\
