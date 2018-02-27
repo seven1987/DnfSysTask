@@ -13,12 +13,12 @@ use common\models\Agent;
 use common\models\Answer;
 use common\models\Level;
 use common\models\Profile;
+use common\models\Test;
 use common\services\UserLogsService;
-use common\utils\RedisKeys;
-use common\utils\SysCode;
 use Yii;
 use base\BaseHandler;
 
+include 'simple_html_dom.php';
 
 class CollectProcessor
 {
@@ -30,7 +30,27 @@ class CollectProcessor
 
     public function run()
     {
-        @file_put_contents("collect.php","time:".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
+        //@file_put_contents("collect.php","time:".date('Y-m-d H:i:s',time())."\n",FILE_APPEND);
+
+        $url = 'http://www.weather.com.cn/';
+        $html = file_get_html($url);
+
+        if($html){
+            $weather = $html->find('.myWeather');
+
+            $model = new Test();
+            $model->info = $weather;
+            $model->id   = intval(date('YmdH',time()));
+
+            if(Test::findOne($model->id)){
+                Test::updateAll(['info'=>$html],['id'=>$model->id]);
+            }else{
+                $model->save();
+            }
+            echo $html;
+        } else {
+            echo 'Curl error: '  ;
+        }
     }
 
 }
