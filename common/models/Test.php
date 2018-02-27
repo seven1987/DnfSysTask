@@ -30,7 +30,7 @@ class Test extends BaseModel
     {
         return [
             [['created', 'updated'], 'safe'],
-            [['info'], 'string', 'max' => 50]
+            [['info'], 'string', 'max' => 4096]
         ];
     }
 
